@@ -22,4 +22,13 @@ describe('OOP Tests', function() {
     expect(user1.getLastLoggedInAt()).toEqual(lastLoggedInDate);
   });
 
+  it('logout test', async () => {
+    var user2 = new User('user2');
+    var logInPromise2 = user2.logIn();
+    await expect(logInPromise2).resolves.not.toThrow();
+    expect(user2.isLoggedIn()).toEqual(true);
+    user2.logOut();
+    expect(user2.isLoggedIn()).toEqual(false);
+  });
+
 });
